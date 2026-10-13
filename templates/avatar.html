@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Set Avatar from URL{% endblock %}
+{% block content %}
+<h1>Set Profile Avatar from URL</h1>
+<p>Paste an image URL and the server will fetch it for your profile.</p>
+<form method="POST">
+  <input type="text" name="url" value="{{ url }}" placeholder="http://example.com/avatar.jpg">
+  <button type="submit">Fetch</button>
+</form>
+{% if result %}
+<pre class="output">{{ result }}</pre>
+{% endif %}
+<p class="hint">Server fetches ANY URL you give it — try an internal address like http://127.0.0.1:5000/healthz (SSRF demo).</p>
+{% endblock %}

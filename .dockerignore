@@ -1,0 +1,7 @@
+.git
+.gitignore
+terraform/
+csrf_demo/
+*.md
+__pycache__/
+*.db

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Search{% endblock %}
+{% block content %}
+<h1>Product Search</h1>
+<form method="GET">
+  <input type="text" name="q" value="{{ query }}" placeholder="Search products...">
+  <button type="submit">Search</button>
+</form>
+{% if query %}
+  <!-- INTENTIONAL: query reflected with |safe => reflected XSS demo -->
+  <p>Results for: {{ query|safe }}</p>
+{% endif %}
+<table class="data-table">
+  <tr><th>Name</th><th>Description</th><th>Price</th></tr>
+  {% for r in results %}
+  <tr><td>{{ r['name'] }}</td><td>{{ r['description'] }}</td><td>₹{{ r['price'] }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

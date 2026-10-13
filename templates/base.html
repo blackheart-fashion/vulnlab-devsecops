@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}VulnLab{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="brand">🛡️ VulnLab <span class="tag">Training Target</span></div>
+    <div class="links">
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('search') }}">Search</a>
+      <a href="{{ url_for('comments') }}">Comments</a>
+      <a href="{{ url_for('ping') }}">Ping Tool</a>
+      <a href="{{ url_for('upload') }}">Upload</a>
+      <a href="{{ url_for('avatar') }}">Avatar (URL)</a>
+      <a href="{{ url_for('welcome') }}">Welcome</a>
+      <a href="{{ url_for('admin_panel') }}">Admin</a>
+      {% if user %}
+        <a href="{{ url_for('profile', user_id=session['user_id']) }}">My Profile</a>
+        <a href="{{ url_for('logout') }}">Logout ({{ user }})</a>
+      {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('register') }}">Register</a>
+      {% endif %}
+    </div>
+  </nav>
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+  <footer>
+    ⚠️ Intentionally vulnerable training app — authorized lab use only.
+  </footer>
+</body>
+</html>

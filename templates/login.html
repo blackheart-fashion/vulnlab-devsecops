@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<h1>Login</h1>
+{% if error %}<p class="error">{{ error|safe }}</p>{% endif %}
+<form method="POST">
+  <label>Username</label>
+  <input type="text" name="username" autocomplete="off">
+  <label>Password</label>
+  <input type="password" name="password">
+  <button type="submit">Login</button>
+</form>
+<p class="hint">Hint: seed users — admin / pawan / riya / test (passwords demo-friendly, see README). Try an SQLi payload here during the demo.</p>
+{% endblock %}

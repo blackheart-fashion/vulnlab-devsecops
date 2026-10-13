@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Admin Panel{% endblock %}
+{% block content %}
+<h1>Admin Panel</h1>
+{% if authorized %}
+  <p class="success">Access granted.</p>
+  <table class="data-table">
+    <tr><th>ID</th><th>Username</th><th>Email</th><th>Role</th></tr>
+    {% for u in users %}
+    <tr><td>{{ u['id'] }}</td><td>{{ u['username'] }}</td><td>{{ u['email'] }}</td><td>{{ u['role'] }}</td></tr>
+    {% endfor %}
+  </table>
+{% else %}
+  <p class="error">Access denied — admin role required. (Hint: escalate via /profile/edit first.)</p>
+{% endif %}
+{% endblock %}

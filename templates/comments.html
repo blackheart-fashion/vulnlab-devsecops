@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Comments{% endblock %}
+{% block content %}
+<h1>Guestbook / Comments</h1>
+<form method="POST">
+  <label>Comment</label>
+  <textarea name="comment" rows="3" placeholder="Say something..."></textarea>
+  <button type="submit">Post</button>
+</form>
+<hr>
+{% for c in comments %}
+  <div class="comment">
+    <strong>{{ c['username'] }}</strong> <span class="ts">{{ c['created_at'] }}</span>
+    <!-- INTENTIONAL: comment rendered with |safe => stored XSS demo -->
+    <p>{{ c['comment']|safe }}</p>
+  </div>
+{% endfor %}
+{% endblock %}

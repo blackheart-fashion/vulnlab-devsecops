@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Upload{% endblock %}
+{% block content %}
+<h1>File Upload (Profile Picture Demo)</h1>
+{% if message %}<p class="success">{{ message }}</p>{% endif %}
+<form method="POST" enctype="multipart/form-data">
+  <input type="file" name="file">
+  <button type="submit">Upload</button>
+</form>
+<h3>Uploaded files</h3>
+<ul>
+  {% for f in files %}
+  <li><a href="{{ url_for('uploaded_file', filename=f) }}" target="_blank">{{ f }}</a></li>
+  {% endfor %}
+</ul>
+<p class="hint">No file-type validation — try uploading a .html file with embedded JS and opening it.</p>
+{% endblock %}

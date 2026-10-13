@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<h1>User Profile #{{ profile['id'] }}</h1>
+<table class="data-table">
+  <tr><th>Username</th><td>{{ profile['username'] }}</td></tr>
+  <tr><th>Email</th><td>{{ profile['email'] }}</td></tr>
+  <tr><th>Role</th><td>{{ profile['role'] }}</td></tr>
+  <tr><th>Secret Note</th><td>{{ profile['secret_note'] }}</td></tr>
+</table>
+<p class="hint">Try changing the id in the URL (/profile/1, /profile/2, ...) — IDOR demo.</p>
+{% endblock %}

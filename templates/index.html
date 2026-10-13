@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}VulnLab - Home{% endblock %}
+{% block content %}
+<h1>Welcome to VulnLab</h1>
+<p>Ye ek intentionally vulnerable demo e-commerce/portal app hai, jo cybersecurity
+training ke liye banaya gaya hai. Niche diye gaye modules use karke live pentesting
+demo karo:</p>
+<ul>
+  <li><strong>Login</strong> — SQL Injection</li>
+  <li><strong>Search</strong> — Reflected XSS</li>
+  <li><strong>Comments</strong> — Stored XSS</li>
+  <li><strong>Ping Tool</strong> — OS Command Injection</li>
+  <li><strong>My Profile (/profile/&lt;id&gt;)</strong> — IDOR</li>
+  <li><strong>Edit Profile</strong> — Privilege Escalation via tampered hidden field</li>
+  <li><strong>Admin Panel</strong> — Broken Access Control</li>
+  <li><strong>Upload</strong> — Insecure File Upload</li>
+</ul>
+<p>Full exploitation steps: dekho <code>VULNERABILITIES.md</code> project ke root me.</p>
+{% if user %}<p>Logged in as: <strong>{{ user }}</strong></p>{% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Edit Profile{% endblock %}
+{% block content %}
+<h1>Edit My Profile</h1>
+<form method="POST">
+  <label>Email</label>
+  <input type="email" name="email" value="{{ profile['email'] }}">
+  <!-- INTENTIONAL: hidden field trusted blindly by server -> tamper in devtools to escalate -->
+  <input type="hidden" name="role" value="{{ profile['role'] }}">
+  <button type="submit">Save</button>
+</form>
+<p class="hint">Current role: <strong>{{ profile['role'] }}</strong>. Try editing the hidden "role" field in browser devtools before submitting.</p>
+{% endblock %}

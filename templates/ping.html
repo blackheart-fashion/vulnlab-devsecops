@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Network Ping Tool{% endblock %}
+{% block content %}
+<h1>Network Diagnostic Tool</h1>
+<p>Enter a host to ping (demo IT-ops utility).</p>
+<form method="POST">
+  <input type="text" name="host" value="{{ host }}" placeholder="e.g. 127.0.0.1">
+  <button type="submit">Ping</button>
+</form>
+{% if output %}
+<pre class="output">{{ output }}</pre>
+{% endif %}
+{% endblock %}

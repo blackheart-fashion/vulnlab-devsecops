@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+{% block content %}
+<h1>Welcome!</h1>
+<p>Share a personalized welcome link with a friend — add <code>#YourName</code> to the URL.</p>
+<div id="greeting"></div>
+<p class="hint">Try: /welcome#&lt;img src=x onerror=alert('dom-xss')&gt; — this never touches the server (DOM-based XSS).</p>
+
+<script>
+  // INTENTIONALLY VULNERABLE: reads location.hash and injects it via
+  // innerHTML with NO sanitization. Classic DOM-based XSS — purely
+  // client-side, so server-side input filters never see this payload.
+  var hash = decodeURIComponent(window.location.hash.substring(1));
+  if (hash) {
+    document.getElementById('greeting').innerHTML = "Hello, " + hash + "!";
+  } else {
+    document.getElementById('greeting').innerHTML = "Hello, guest!";
+  }
+</script>
+{% endblock %}

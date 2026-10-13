@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  vulnlab:
+    build: .
+    image: vulnlab:latest
+    container_name: vulnlab_target
+    ports:
+      - "5000:5000"
+    networks:
+      - lab_network
+    restart: unless-stopped
+
+networks:
+  # Isolated network — keep this off your main LAN / production network.
+  # For classroom use, run the host machine on a network not reachable
+  # from the internet, or firewall port 5000 to the lab subnet only.
+  lab_network:
+    driver: bridge
