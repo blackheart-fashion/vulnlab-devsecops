@@ -115,19 +115,6 @@ mein `APP_PORT` environment variable change kar do.
 
 Full step-by-step class script — exploit, root cause, and **live-editable
 fix code for each of the 20** — is in **VULNERABILITIES.md**.
-
----
-
-## ☁️ Teaching this as a Cloud & DevOps Subject
-
-Agar tumhara focus **Cloud and DevOps** subject hai (pentesting sirf
-use-case hai), to **DEVOPS_CLOUD_GUIDE.md** dekho — wahan pura mapping hai:
-CI/CD pipeline concepts, containerization, DevSecOps gates (SAST/secret
-scan/container scan — jo ab Jenkinsfile mein hain), Infrastructure as Code
-(`terraform/main.tf`), cloud deployment models (IaaS/PaaS/Containers), aur
-monitoring/observability — sab is hi project se map kiya hua hai, with a
-suggested 2-hour class flow.
-
 ---
 
 ## 🧯 Resetting the Lab
